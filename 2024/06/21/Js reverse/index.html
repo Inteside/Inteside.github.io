@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>JS逆向:某专科学院的教务管理系统js逆向 | Fiee_blog</title>
+  <title>JS逆向:某专科学院的教务管理系统js逆向记录 | Fiee_blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -283,13 +283,13 @@
         <h2>
           <span>
             <i class="fas fa-search" aria-hidden="true"></i>
-            <span class="title">Search</span>
+            <span class="title">本地搜索</span>
           </span>
           <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
         </h2>
         <form class="site-search-form">
           <input type="text"
-            placeholder="Please enter keywords"
+            placeholder="请输入关键字"
             id="local-search-input" 
             @click="getSearchFile()"
             class="st-search-input"
@@ -374,21 +374,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        JS逆向:某专科学院的教务管理系统js逆向
+        JS逆向:某专科学院的教务管理系统js逆向记录
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-06-21 |
+          <i class="fas fa-calendar"></i> 发表于：2024-06-21 |
         </span>
       
 
@@ -413,18 +413,23 @@
     <article class="post post-detail">
       <div class="post-content">
         <p>在现代信息社会，很多高校的教务管理系统通过网络提供学生成绩查询、选课、课表查询等功能。然而，某些系统在实现上存在一些不合理之处，导致用户体验不佳，甚至存在安全隐患。本文将以某专科学院的教务管理系统为例，通过对其前端JavaScript代码进行逆向分析，揭示其中的漏洞，并提出改进建议。</p>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h2><p>pc端的教务系统太老，使用旧时代的jsp技术，看不懂，索性就往移动端逆向</p>
+<h3 id="二-寻找登录页面"><a href="#二-寻找登录页面" class="headerlink" title="二. 寻找登录页面"></a>二. 寻找登录页面</h3><h4 id="在逆向过程中，发现移动端为两个页面"><a href="#在逆向过程中，发现移动端为两个页面" class="headerlink" title="在逆向过程中，发现移动端为两个页面"></a>在逆向过程中，发现移动端为两个页面</h4><p><img src="https://img.picui.cn/free/2024/06/23/667795599ef3e.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/06/23/667795599ef3e.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="移动端登录页面"><br><img src="https://img.picui.cn/free/2024/06/23/6677917b11990.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/06/23/6677917b11990.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="移动端教务系统页面"><br><img src="https://img.picui.cn/free/2024/06/23/6677933ce0232.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/06/23/6677933ce0232.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"><br>f12打开控制台可以看到跳转地址为:<a target="_blank" rel="noopener" href="http://jwxt.hnbemc.cn/bzb_njwhd/loginSsom">http://jwxt.hnbemc.cn:80/bzb_njwhd/loginSsom</a><br>第二个页面是<a target="_blank" rel="noopener" href="http://jwxt.hnbemc.cn/#/login">http://jwxt.hnbemc.cn/#/login</a> (这里就不放第二个页面的图片了因为全文围绕第一个页面所逆向)</p>
+<h2 id="三-分析页面"><a href="#三-分析页面" class="headerlink" title="三. 分析页面"></a>三. 分析页面</h2><p>登录页面也找到了，开始看看api携带的什么，一般登录用户的密码会加密后发送给服务端<br><img src="https://img.picui.cn/free/2024/06/23/6677964fd50f4.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/06/23/6677964fd50f4.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"><br>所以这里打开f12，开始打断点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var params = &#123;</span><br><span class="line">                    <span class="string">&#x27;userName&#x27;</span>: user,</span><br><span class="line">                    <span class="string">&#x27;password&#x27;</span>: encrypt(password),</span><br><span class="line">                    <span class="string">&#x27;wxfwhopenid&#x27;</span>: wxfwhopenid+<span class="string">&quot;&quot;</span>,</span><br><span class="line">                    <span class="string">&#x27;dllx&#x27;</span>: dlzdlx()</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，user和password传给params对象，这里的password很明显调用了encrypt传进去了password进行加密<br>此时不要松开断点，直接在控制台打印这个encrypt函数<br><img src="https://img.picui.cn/free/2024/06/23/667797a75b4a5.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/06/23/667797a75b4a5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"><br>可以看到打印出来一个加密方法,这里我点击这个方法不知道为啥会跳转到<img src="https://img.picui.cn/free/2024/06/23/667797f5a3e86.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/06/23/667797f5a3e86.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp">这个页面,先不管，继续分析输出的方法。这里…是被省略了，用’…’展开符也没用，不过这里猜测也能猜得出，就少了个retrun，下面是完整的encrypt方法</p>
+<h3 id="分析encrypt加密"><a href="#分析encrypt加密" class="headerlink" title="分析encrypt加密"></a>分析encrypt加密</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// encrypt加密</span><br><span class="line">encrypt(word)</span><br><span class="line">&#123;</span><br><span class="line">    var key=CryptoJS.enc.Utf8.parse(<span class="string">&quot;qwertyuiqwertyui&quot;</span>);</span><br><span class="line">    var srcs=CryptoJS.enc.Utf8.parse(word);</span><br><span class="line">    var encrypted=CryptoJS.AES.encrypt(srcs,key,&#123;mode:CryptoJS.mode.ECB,padding:CryptoJS.pad.Pkcs7)</span><br><span class="line">    <span class="built_in">return</span> encrypted.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，声明了一个key为CryptoJS，我去网上查了下CryptoJS是一个加密库，这个key就是加密需要用的密钥，这行代码将字符串”qwertyuiqwertyui”转换为一个UTF-8编码的字节数组，用作AES加密的密钥。AES-128加密算法需要一个16字节的密钥，而这个密钥正好是16个字符(即16字节),接下来我们逐一分析</p>
+<h4 id="分析srcs加密"><a href="#分析srcs加密" class="headerlink" title="分析srcs加密"></a>分析srcs加密</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// srcs</span><br><span class="line">var srcs = CryptoJS.enc.Utf8.parse(word);</span><br></pre></td></tr></table></figure>
+<p>word猜测是password，这行代码将传入的明文字符串word转换为一个UTF-8编码的字节数组，以便进行加密。</p>
+<h4 id="分析AES加密"><a href="#分析AES加密" class="headerlink" title="分析AES加密"></a>分析AES加密</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// encrypted </span><br><span class="line">var encrypted = CryptoJS.AES.encrypt(srcs, key, &#123; mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 &#125;);</span><br></pre></td></tr></table></figure>
+<p>这行代码使用AES加密算法对明文进行加密。它使用了ECB模式（Electronic Codebook mode）和PKCS7填充方式。ECB模式是一种较为简单的块加密模式，但安全性不如其他模式（如CBC模式）。</p>
+<p>最后就是将加密后的数据转换为字符串并返回。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">return</span> encrypted.toString();</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>由此看来密钥直接放在方法很不安全，不过如果不放逆向工程又得麻烦一倍😂</p>
+<h2 id="三-最后"><a href="#三-最后" class="headerlink" title="三.最后"></a>三.最后</h2><p>本文介绍了高校教务系统的密码加密逻辑以及使用JavaScript进行逆向分析的方法。通过学习这些知识，你可以更好地理解密码加密技术的原理，并掌握一定的逆向分析技巧。请注意，逆向分析可能涉及到法律问题，请在合法范围内进行研究和实践。</p>
+<h2 id="四-累计更新"><a href="#四-累计更新" class="headerlink" title="四.累计更新"></a>四.累计更新</h2><p>由于长度的问题,关于这篇文章后面还会继续更新获取token逆向,由于我是第一次发博文，所以有哪些不好的地方请大家见谅，也可以提出要求我会加进更改(ง •̀_•́)ง‼</p>
 
       </div>
       <div class="post-tags-categories">
@@ -434,16 +439,16 @@
         <div class="copyright">
   <ul class="post-copyright">
     <li class="post-copyright-author">
-    <strong>author:  </strong>John Doe</a>
+    <strong>作者:  </strong>Inteside</a>
     </li>
     <li class="post-copyright-link">
-    <strong>link:  </strong>
-    <a href="/2024/06/21/Js reverse/" target="_blank" title="JS逆向:某专科学院的教务管理系统js逆向">https://inteside.github.io/2024/06/21/Js reverse/</a>
+    <strong>文章链接:  </strong>
+    <a href="/2024/06/21/Js reverse/" target="_blank" title="JS逆向:某专科学院的教务管理系统js逆向记录">https://inteside.github.io/2024/06/21/Js reverse/</a>
     </li>
     <li class="post-copyright-license">
-      <strong>Copyright notice:   </strong>
-      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-      reprint policy. If reproduced, please indicate source!
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
     </li>
   </ul>
 <div>
@@ -680,7 +685,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-text">三级标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%89%8D%E8%A8%80"><span class="toc-text">一.前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%AF%BB%E6%89%BE%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2"><span class="toc-text">二. 寻找登录页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E9%80%86%E5%90%91%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E5%8F%91%E7%8E%B0%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%BA%E4%B8%A4%E4%B8%AA%E9%A1%B5%E9%9D%A2"><span class="toc-text">在逆向过程中，发现移动端为两个页面</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%88%86%E6%9E%90%E9%A1%B5%E9%9D%A2"><span class="toc-text">三. 分析页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90encrypt%E5%8A%A0%E5%AF%86"><span class="toc-text">分析encrypt加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90srcs%E5%8A%A0%E5%AF%86"><span class="toc-text">分析srcs加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90AES%E5%8A%A0%E5%AF%86"><span class="toc-text">分析AES加密</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%9C%80%E5%90%8E"><span class="toc-text">三.最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%B4%AF%E8%AE%A1%E6%9B%B4%E6%96%B0"><span class="toc-text">四.累计更新</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -715,7 +720,7 @@
             <div class="post-img-box">
               <a href="/2024/06/21/Js%20reverse/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -724,7 +729,7 @@
                   <span class="post-date">06-21</span>
                 
               </div>
-              <a class="post-title" href="/2024/06/21/Js%20reverse/">JS逆向:某专科学院的教务管理系统js逆向</a>
+              <a class="post-title" href="/2024/06/21/Js%20reverse/">JS逆向:某专科学院的教务管理系统js逆向记录</a>
             </div>
           </div>
         
@@ -1452,7 +1457,7 @@
       },
       mounted() {
         const that = this;
-        var copy = 'copy';
+        var copy = '复制';
         /* code */
         var initCopyCode = function () {
           var copyHtml = '';
