@@ -19,6 +19,21 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script async src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -434,7 +449,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/06/21/hello-world/" target="_blank" title="我的第一篇博文">http://example.com/2024/06/21/hello-world/</a>
+    <a href="/2024/06/21/hello-world/" target="_blank" title="我的第一篇博文">https://inteside.github.io/2024/06/21/hello-world/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
