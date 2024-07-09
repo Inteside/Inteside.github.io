@@ -412,13 +412,13 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <blockquote>
-<p>文章转载自左杨博客,仅用于学习记录,如果侵权博主请联系</p>
-</blockquote>
-<h2 id="一、在根目录下的-env-d-ts文件（没有就自己创建）"><a href="#一、在根目录下的-env-d-ts文件（没有就自己创建）" class="headerlink" title="一、在根目录下的 env.d.ts文件（没有就自己创建）"></a>一、在根目录下的 env.d.ts文件（没有就自己创建）</h2><p><img src="https://img.picui.cn/free/2024/07/09/668c8b00e6ae3.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/07/09/668c8b00e6ae3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image.png"></p>
+        <h2 id="一、在根目录下的-env-d-ts文件（没有就自己创建）"><a href="#一、在根目录下的-env-d-ts文件（没有就自己创建）" class="headerlink" title="一、在根目录下的 env.d.ts文件（没有就自己创建）"></a>一、在根目录下的 env.d.ts文件（没有就自己创建）</h2><p><img src="https://img.picui.cn/free/2024/07/09/668c8b00e6ae3.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/07/09/668c8b00e6ae3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image.png"></p>
 <h2 id="二、在env-d-ts文件中添加以下代码"><a href="#二、在env-d-ts文件中添加以下代码" class="headerlink" title="二、在env.d.ts文件中添加以下代码"></a>二、在env.d.ts文件中添加以下代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;reference types=<span class="string">&quot;vite/client&quot;</span> /&gt;</span><br><span class="line"><span class="built_in">declare</span> module <span class="string">&#x27;*.vue&#x27;</span> &#123;</span><br><span class="line">  import <span class="built_in">type</span> &#123; DefineComponent &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">  const component: DefineComponent&lt;&#123;&#125;, &#123;&#125;, any&gt;</span><br><span class="line">  <span class="built_in">export</span> default component</span><br><span class="line">&#125;</span><br><span class="line">//或者</span><br><span class="line"><span class="built_in">declare</span> module <span class="string">&#x27;*.vue&#x27;</span> &#123;</span><br><span class="line">  import <span class="built_in">type</span> &#123; DefineComponent &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">  const component: ComponentOptions | ComponentOptions[<span class="string">&#x27;setup&#x27;</span>]</span><br><span class="line">  <span class="built_in">export</span> default component</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、效果如下"><a href="#三、效果如下" class="headerlink" title="三、效果如下"></a>三、效果如下</h2><p><img src="https://img.picui.cn/free/2024/07/09/668c8beb9d1aa.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/07/09/668c8beb9d1aa.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image-1.png"></p>
+<blockquote>
+<p>文章转载自左杨博客,仅用于学习记录,如果侵权博主请联系</p>
+</blockquote>
 
       </div>
       <div class="post-tags-categories">
