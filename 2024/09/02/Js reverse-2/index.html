@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>vite+vue3+ts 显示找不到模块“../views/HomeView.vue”或其相应的类型声明。ts(2307) | Inteside&#39;blog</title>
+  <title>JS逆向:某专科学院的教务管理系统js逆向记录(2) | Inteside&#39;blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/logo.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -366,21 +366,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        vite+vue3+ts 显示找不到模块“../views/HomeView.vue”或其相应的类型声明。ts(2307)
+        JS逆向:某专科学院的教务管理系统js逆向记录(2)
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2024-08-19 |
+          <i class="fas fa-calendar"></i> 发表于：2024-09-02 |
         </span>
       
 
@@ -404,13 +404,14 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="一、在根目录下的-env-d-ts文件（没有就自己创建）"><a href="#一、在根目录下的-env-d-ts文件（没有就自己创建）" class="headerlink" title="一、在根目录下的 env.d.ts文件（没有就自己创建）"></a>一、在根目录下的 env.d.ts文件（没有就自己创建）</h2><p><img src="https://img.picui.cn/free/2024/07/09/668c8b00e6ae3.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/07/09/668c8b00e6ae3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<h2 id="二、在env-d-ts文件中添加以下代码"><a href="#二、在env-d-ts文件中添加以下代码" class="headerlink" title="二、在env.d.ts文件中添加以下代码"></a>二、在env.d.ts文件中添加以下代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    /// &lt;reference types=<span class="string">&quot;vite/client&quot;</span> /&gt;</span><br><span class="line"><span class="built_in">declare</span> module <span class="string">&#x27;*.vue&#x27;</span> &#123;</span><br><span class="line">  import <span class="built_in">type</span> &#123; DefineComponent &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">  const component: DefineComponent&lt;&#123;&#125;, &#123;&#125;, any&gt;</span><br><span class="line">  <span class="built_in">export</span> default component</span><br><span class="line">&#125;</span><br><span class="line">//或者</span><br><span class="line"><span class="built_in">declare</span> module <span class="string">&#x27;*.vue&#x27;</span> &#123;</span><br><span class="line">  import <span class="built_in">type</span> &#123; DefineComponent &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">  const component: ComponentOptions | ComponentOptions[<span class="string">&#x27;setup&#x27;</span>]</span><br><span class="line">  <span class="built_in">export</span> default component</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三-效果如下"><a href="#三-效果如下" class="headerlink" title="三. 效果如下"></a>三. 效果如下</h2><p><img src="https://img.picui.cn/free/2024/07/09/668c8beb9d1aa.png" class="lazyload placeholder" data-srcset="https://img.picui.cn/free/2024/07/09/668c8beb9d1aa.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<blockquote>
-<p>文章转载自左杨博客,仅用于学习记录,如果侵权博主请联系</p>
-</blockquote>
+        <p>书接上回,在上一回我们把登录表单搞定了,接下来就是怎么去获取用户个人信息了<br>话不多说咱们开始</p>
+<h2 id="1-分析用户个人信息接口"><a href="#1-分析用户个人信息接口" class="headerlink" title="1. 分析用户个人信息接口"></a>1. 分析用户个人信息接口</h2><p><img src="https://www.freeimg.cn/i/2024/09/02/66d57394688df.png" class="lazyload placeholder" data-srcset="https://www.freeimg.cn/i/2024/09/02/66d57394688df.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="个人信息接口"><br>可以看到请求头要携带Token,而这个Token是一个加密后的用户信息之类的，没有它是访问不了个人信息接口,我们刷新这个页面找到获取Token的接口,</p>
+<p><img src="https://www.freeimg.cn/i/2024/09/02/66d5751c86fc6.png" class="lazyload placeholder" data-srcset="https://www.freeimg.cn/i/2024/09/02/66d5751c86fc6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="initUserInfo2接口"></p>
+<p>可以看到这个接口是用来获取用户信息的,但是没想到这个Token得请求头携带Token才能获取😂;<br><img src="https://www.freeimg.cn/i/2024/09/02/66d57564e6600.png" class="lazyload placeholder" data-srcset="https://www.freeimg.cn/i/2024/09/02/66d57564e6600.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p>既然接口这边走不通,直接断点大法;</p>
+<h2 id="2-断点寻找Token"><a href="#2-断点寻找Token" class="headerlink" title="2. 断点寻找Token"></a>2. 断点寻找Token</h2><p>首先回到咱们第一章逆向的登录进来的页面<br><img src="https://www.freeimg.cn/i/2024/09/02/66d577d542d01.png" class="lazyload placeholder" data-srcset="https://www.freeimg.cn/i/2024/09/02/66d577d542d01.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="登录页面"></p>
+<!-- 补充图片 -->
+<p><img src="/" class="lazyload placeholder" data-srcset="/" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="断点1"><br>精准断点！（其实是网页禁止你检索它的源码所做的断点）<br>好,那咱们就将计就计,可以看到这个点断的很好,后面这个url是跳转到教务管理系统的,接下来就是重点了</p>
 
       </div>
       <div class="post-tags-categories">
@@ -424,7 +425,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2024/08/19/note taking-1/" target="_blank" title="vite+vue3+ts 显示找不到模块“../views/HomeView.vue”或其相应的类型声明。ts(2307)">http://inteside.github.io/2024/08/19/note taking-1/</a>
+    <a href="/2024/09/02/Js reverse-2/" target="_blank" title="JS逆向:某专科学院的教务管理系统js逆向记录(2)">http://inteside.github.io/2024/09/02/Js reverse-2/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -446,17 +447,17 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2024/09/02/Js%20reverse-2/" class="post-nav-link">
+    <a href="/2024/09/18/%E9%97%AE%E9%A2%98%E7%99%BE%E7%A7%91/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">JS逆向:某专科学院的教务管理系统js逆向记录(2)</div>
+        <div class="title-text">至今开发项目遇到的问题收集</div>
       </div>
       
       <!-- <div class="content">
-        书接上回,在上一回我们把登录表单搞定了,接下来就是怎么去获取用户个人信息了话不多说咱们开始
-1. 分析用户个人信息接口可
+        1. 项目中遇到问题的记录在用NextUI开发Autovideo遇到一些问题，记录如下：
+1.1 项目中使用NextUI
       </div> -->
     </a>
   </div>
@@ -467,15 +468,16 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2024/08/18/Js%20reverse/" class="post-nav-link">
+    <a href="/2024/08/19/note%20taking-1/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">JS逆向:某专科学院的教务管理系统js逆向记录</div>
+        <div class="title-text">vite+vue3+ts 显示找不到模块“../views/HomeView.vue”或其相应的类型声明。ts(2307)</div>
       </div>
       <!-- <div class="content">
-        在现代信息社会，很多高校的教务管理系统通过网络提供学生成绩查询、选课、课表查询等功能。然而，某些系统在实现上存在一些不合
+        一、在根目录下的 env.d.ts文件（没有就自己创建）
+二、在env.d.ts文件中添加以下代码12345678910
       </div> -->
     </a>
   </div>
@@ -559,7 +561,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9C%A8%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84-env-d-ts%E6%96%87%E4%BB%B6%EF%BC%88%E6%B2%A1%E6%9C%89%E5%B0%B1%E8%87%AA%E5%B7%B1%E5%88%9B%E5%BB%BA%EF%BC%89"><span class="toc-text">一、在根目录下的 env.d.ts文件（没有就自己创建）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%A8env-d-ts%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%BB%A5%E4%B8%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">二、在env.d.ts文件中添加以下代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%95%88%E6%9E%9C%E5%A6%82%E4%B8%8B"><span class="toc-text">三. 效果如下</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%86%E6%9E%90%E7%94%A8%E6%88%B7%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%8E%A5%E5%8F%A3"><span class="toc-text">1. 分析用户个人信息接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%AD%E7%82%B9%E5%AF%BB%E6%89%BEToken"><span class="toc-text">2. 断点寻找Token</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
